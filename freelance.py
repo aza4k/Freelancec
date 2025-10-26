@@ -483,7 +483,7 @@ def cb_remove_from_cat(call: types.CallbackQuery):
         bot.answer_callback_query(call.id, "Tabilmadi")
 
 # ----- Admin broadcast flows (unchanged) -----
-@bot.message_handler(func=lambda m: m.text == "📢 Ha'mmege xabar")
+@bot.message_handler(func=lambda m: m.text == "📢 Hammege xabar jiberiw")
 def msg_broadcast_start(message: types.Message):
     if not is_admin(message.from_user.id):
         bot.send_message(message.chat.id, "⛔ Suck my dick.")
