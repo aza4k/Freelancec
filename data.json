@@ -1,0 +1,50 @@
+{
+  "categories": {
+    "Slayd islew": [],
+    "Referat jazıw": [
+      "thedurev"
+    ],
+    "Kod jazıw": [
+      "imanbaevme",
+      "thedurev"
+    ],
+    "Dápter jazıw": [],
+    "Dizayn": []
+  },
+  "freelancers": {
+    "imanbaevme": {
+      "first_name": "Tleuli",
+      "last_name": "Imanbaev",
+      "phone": "+998912618831",
+      "ratings": {
+        "8423213791": 5,
+        "7087477942": 2,
+        "7055980753": 5
+      },
+      "visible": true,
+      "added_at": "2025-10-25T21:12:49.218257"
+    },
+    "thedurev": {
+      "first_name": "Azamat",
+      "last_name": "Dúysenbaev",
+      "phone": "+998912618831",
+      "ratings": {
+        "8423213791": 5,
+        "7055980753": 5,
+        "8186593646": 1
+      },
+      "visible": true,
+      "added_at": "2025-10-25T21:18:35.127842"
+    }
+  },
+  "admins": [
+    8423213791,
+    7055980753
+  ],
+  "users": [
+    8423213791,
+    7087477942,
+    7055980753,
+    8186593646
+  ]
+}
