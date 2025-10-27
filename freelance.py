@@ -18,17 +18,35 @@ LOGGING_LEVEL = logging.INFO
 
 # <<< MONGO: DATA_FILE kerek emes. Onın' ornına baza jalg'anıwı
 # Railway avtomat túrde 'MONGO_URL' yaki 'MONGODB_URI' di beredi
-MONGO_CONNECTION_STRING = os.environ.get("MONGO_URL") 
+MONGO_CONNECTION_STRING = (
+    os.environ.get("MONGODB_URI") or 
+    os.environ.get("MONGO_URL") or
+    os.environ.get("MONGO_URI")
+)
+
 if not MONGO_CONNECTION_STRING:
-    logging.warning("MONGO_URL tabilmadi! Railway'de MongoDB qosılg'anina isenim payda etin'.")
-    # Lokal islew ushın (eger kerek bolsa):
-    # MONGO_CONNECTION_STRING = "mongodb://localhost:27017/"
+    logging.error("!!! BAZA JALG'ANIWI TABILMADI! MONGO_URL yaki MONGODB_URI tabilmadi.")
+    # Eger jergilikli (lokal) islep atırg'an bolsan'ız, to'mendegi qatardı iske qosın':
+    # MONGO_CONNECTION_STRING = "mongodb://localhost:27017/" 
+    # Biraq Railway ushın bul qatar kommentariyde turıwı kerek.
 
 client = pymongo.MongoClient(MONGO_CONNECTION_STRING)
-db = client.get_default_database()  # Railway bergen bazanı avtomat alıw
+
+# 2. Baza atın qoldan kirgizemiz (avtomat emes)
+# Qa'legen attı qoysan'ız boladı, mısalı "freelancer_db"
+try:
+    db = client["freelancer_db"] 
+    # Jalg'anıwdı tekseriw ushın bir a'piwayı komanda jiberemiz
+    db.command("ping") 
+    logging.info("MongoDB bazasına sawbetli jalg'anıldı.")
+except Exception as e:
+    logging.critical(f"MongoDB'g'a jalg'anıwda kritikalıq qa'te: {e}")
+    # Eger jalg'ana almasa, bot islemewi kerek
+    exit("Baza jalg'anıwı qa'tesi.")
+
 
 # <<< MONGO: Hár bir "data" ushın bo'lek "kolleksiya" (Collection) jaratamız
-col_config = db["config"]        # Adminler, ulıwma sazlamalar ushın
+col_config = db["config"]
 col_users = db["users"]          # Bot paydalanıwshıları
 col_categories = db["categories"]  # Kategoriyalar
 col_freelancers = db["freelancers"] # Freelancer profilleri
