@@ -12,7 +12,7 @@ from telebot import types
 import pymongo  # <<< MONGO: Kerekli import
 
 # ============== SOZLAMALAR =================
-BOT_TOKEN = "8354379033:AAEoFOJ4YL5HadL9sHMw8EkVM6YJoFQrkMI"
+BOT_TOKEN = "8430838358:AAGLAyKhQ7uxv6H_oJRNCMv3a62MD0dec2M"
 MAIN_ADMIN_ID = 7055980753
 LOGGING_LEVEL = logging.INFO
 
